@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { UserLogin } from '../../interfaces/User';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,29 +7,41 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn = new BehaviorSubject<boolean>(false);
-
   constructor(private http: HttpClient) { }
 
   login(model: UserLogin): Observable<boolean> {
     return this.http.post('https://localhost:44315/api/User/Login', model, { withCredentials: true }).pipe(
       map(() => {
-        this.loggedIn.next(true);
         return true;
       }),
       catchError(error => {
         console.error('Login error', error);
-        this.loggedIn.next(false);
         return of(false);
       })
     );
   }
 
-  logout(): void {
-    this.loggedIn.next(false);
+  logout(): Observable<boolean> {
+    return this.http.get('https://localhost:44315/api/User/Logout', { withCredentials: true }).pipe(
+      map(() => {
+        return true;
+      }),
+      catchError(error => {
+        console.error('Login error', error);
+        return of(false);
+      })
+    );
   }
 
   isLoggedIn(): Observable<boolean> {
-    return this.loggedIn.asObservable();
+    return this.http.get<boolean>('https://localhost:44315/api/User/IsLoggedIn', { withCredentials: true }).pipe(
+      map((response: boolean) => {
+        return response;
+      }),
+      catchError(error => {
+        console.error('Login error', error);
+        return of(false);
+      })
+    );
   }
 }

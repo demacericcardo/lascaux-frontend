@@ -4,13 +4,20 @@
     <div class="col-4 m-0 p-0" *ngFor="let item of dataArray">
       <div class="m-3">
         <div class="card w-100">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShJCeBkwXV30x6m7j9pfTIbV0BY7bqtFV_hA&s"
-            class="card-img-top" alt="img" />
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <div class="d-flex justify-content-between">
+              <h4 class="card-title">{{ item.title }}</h4>
+              <small
+                >{{ getGenreString(item.genre) }} -
+                {{ item.minuteLenght }} minuti</small
+              >
+            </div>
+            <h6 class="card-text">
+              {{ item.director }}
+            </h6>
+            <hr>
             <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content
+              {{ item.description }}
             </p>
           </div>
         </div>

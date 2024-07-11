@@ -21,8 +21,8 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit() {
-    this.authService.login(this.model).subscribe(
-      success => {
+    this.authService.login(this.model)
+    .subscribe((success: boolean) => {
         if (success) {
           this.router.navigate(['/']);
         } else {
