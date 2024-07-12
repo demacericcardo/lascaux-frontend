@@ -29,12 +29,8 @@ export class FilmAddComponent {
   onSubmit() {
     this.screenService.create(this.model)
       .subscribe((success: boolean) => {
-        if (success) {
+        if (success)
           this.router.navigate(['/film']);
-        } else {
-          alert('Errore nella creazione del film');
-        }
-      }
-      );
+      });
   }
 }

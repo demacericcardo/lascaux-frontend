@@ -54,13 +54,9 @@ export class ScheduleSetComponent {
   onSubmit(): void {
     this.filmService.setSchedule(this.model)
       .subscribe((success: boolean) => {
-        if (success) {
+        if (success)
           this.router.navigate(['']);
-        } else {
-          alert('Errore nella creazione della programmazione');
-        }
-      }
-      );
+      });
   }
 
 }

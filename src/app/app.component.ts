@@ -9,4 +9,4 @@ import { NavbarComponent } from './navbar/navbar.component';
   templateUrl: './app.component.html'
 })
 
-export class AppComponent {}
+export class AppComponent { }

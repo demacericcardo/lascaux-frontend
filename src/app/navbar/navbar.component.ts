@@ -24,11 +24,8 @@ export class NavbarComponent {
   onLogout() {
     this.authService.logout()
       .subscribe((success: boolean) => {
-        if (success) {
+        if (success)
           window.location.href = '/';
-        } else {
-          alert('Logout fallito!');
-        }
       });
   }
 

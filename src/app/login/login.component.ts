@@ -22,13 +22,9 @@ export class LoginComponent {
 
   onSubmit() {
     this.authService.login(this.model)
-    .subscribe((success: boolean) => {
-        if (success) {
+      .subscribe((success: boolean) => {
+        if (success)
           this.router.navigate(['/']);
-        } else {
-          alert('Username o password non corretti!');
-        }
-      }
-    );
+      });
   }
 }

@@ -44,12 +44,8 @@ export class ScreenEditComponent {
   onSubmit() {
     this.screenService.edit(this.queryStringId, this.model)
       .subscribe((success: boolean) => {
-        if (success) {
+        if (success)
           this.router.navigate(['/sale']);
-        } else {
-          alert('Errore nella creazione della sala');
-        }
-      }
-      );
+      });
   }
 }

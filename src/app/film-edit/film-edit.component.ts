@@ -50,12 +50,8 @@ export class FilmEditComponent {
   onSubmit() {
     this.filmService.edit(this.queryStringId, this.model)
       .subscribe((success: boolean) => {
-        if (success) {
+        if (success)
           this.router.navigate(['/film']);
-        } else {
-          alert('Errore nella creazione della sala');
-        }
-      }
-      );
+      });
   }
 }
