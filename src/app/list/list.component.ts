@@ -28,8 +28,9 @@ export class ListComponent {
   ngOnInit() {
     this.filmService.getAll()
       .subscribe((data: FilmOutput[]) => {
-        this.data = data;
-        this.filteredData = data;
+        const futureFilms = data.filter(e => e.schedule && (isBefore(new Date(), e.schedule.endDate) || isSameDay(new Date(), e.schedule.endDate)));
+        this.data = futureFilms;
+        this.filteredData = futureFilms;
       });
   }
 

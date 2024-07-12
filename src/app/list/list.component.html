@@ -47,7 +47,7 @@
               </div>
               <div class="col-2">
                 <div class="text-center d-flex justify-content-center align-items-center w-100 h-100">
-                  <div *ngIf="item.schedule; else noSchedule">
+                  <div *ngIf="item.schedule">
                     <div>
                       <small>Dal {{item.schedule.startDate | date:'dd/MM/yyyy'}}</small>
                     </div>
@@ -58,11 +58,6 @@
                       <strong>In {{item.schedule.screen.name}}</strong>
                     </div>
                   </div>
-                  <ng-template #noSchedule>
-                    <div>
-                      <small>Nessuna programmazione al momento</small>
-                    </div>
-                  </ng-template>
                 </div>
               </div>
             </div>
