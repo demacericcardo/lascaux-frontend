@@ -1,21 +1,23 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container">
-      <span class="navbar-brand fs-3">Lascaux Test</span>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Programmazione</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/sale">Sale</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/film">Film</a>
-          </li>
-        </ul>
-      </div>
+  <div class="container">
+    <span class="navbar-brand fs-3">Lascaux Test</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Programmazione</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sale">Sale</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/film">Film</a>
+        </li>
+      </ul>
+      <span style="cursor: pointer;" class="nav-link" (click)="onLogout()">Logout</span>
     </div>
-  </nav>
+  </div>
+</nav>

@@ -1,24 +1,68 @@
-<app-navbar />
+<app-navbar *ngIf="showNavbar" />
 <div class="container">
-  <div class="row my-5">
-    <div class="col-4 m-0 p-0" *ngFor="let item of dataArray">
+  <div class="d-flex justify-content-between align-items-center my-5">
+    <div class="d-flex">
+      <div class="d-flex align-items-center me-2">
+        <label class="me-2" for="from">Da:</label>
+        <input id="from" name="from" type="date" class="form-control" [(ngModel)]="fromDate">
+      </div>
+      <div class="d-flex align-items-center me-2">
+        <label class="me-2" for="to">A:</label>
+        <input id="to" name="to" type="date" class="form-control" [(ngModel)]="toDate">
+      </div>
+    </div>
+    <div>
+      <input type="text" class="form-control" placeholder="Ricerca..." [(ngModel)]="searchString"
+        (input)="onSearchStringChange()">
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-12" *ngFor="let item of filteredData">
       <div class="m-3">
-        <div class="card w-100">
+        <div class="card">
           <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <h4 class="card-title">{{ item.title }}</h4>
-              <small
-                >{{ getGenreString(item.genre) }} -
-                {{ item.minuteLenght }} minuti</small
-              >
+            <div class="row d-flex">
+              <div class="col-10">
+                <div>
+                  <h4 class="card-title">{{ item.title }}</h4>
+                </div>
+                <div>
+                  <small>{{ getGenreString(item.genre) }} -
+                    {{ item.minuteLenght }} minuti</small>
+                </div>
+                <div>
+                  <h6 class="card-text">
+                    {{ item.director }}
+                  </h6>
+                </div>
+                <hr>
+                <div>
+                  <p class="card-text">
+                    {{ item.description }}
+                  </p>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="text-center d-flex justify-content-center align-items-center w-100 h-100">
+                  <div *ngIf="item.schedules[0]; else noSchedule">
+                    <div>
+                      <small>Dal {{item.schedules[0].startDate | date:'dd/MM/yyyy'}}</small>
+                    </div>
+                    <div>
+                      <small>Al {{item.schedules[0].endDate | date:'dd/MM/yyyy'}}</small>
+                    </div>
+                    <div>
+                      <strong>In {{item.schedules[0].screenName}}</strong>
+                    </div>
+                  </div>
+                  <ng-template #noSchedule>
+                    <div>
+                      <small>Nessuna programmazione al momento</small>
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
             </div>
-            <h6 class="card-text">
-              {{ item.director }}
-            </h6>
-            <hr>
-            <p class="card-text">
-              {{ item.description }}
-            </p>
           </div>
         </div>
       </div>

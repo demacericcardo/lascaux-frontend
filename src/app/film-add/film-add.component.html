@@ -1,0 +1,49 @@
+<app-navbar />
+<div class="container my-5">
+    <div class="my-5">
+        <h2>Crea nuovo film</h2>
+    </div>
+    <form (ngSubmit)="onSubmit()">
+        <div class="row d-flex align-items-end">
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Titolo</label>
+                    <input type="text" class="form-control" [(ngModel)]="model.title" name="title" id="title">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descrizione</label>
+                    <textarea type="text" class="form-control" [(ngModel)]="model.description" name="description"
+                        id="description"></textarea>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="director" class="form-label">Regista</label>
+                    <input type="text" class="form-control" [(ngModel)]="model.director" name="director" id="director">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="minuteLenght" class="form-label">Durata film in minuti</label>
+                    <input type="number" class="form-control" [(ngModel)]="model.minuteLenght" name="minuteLenght"
+                        id="minuteLenght">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="genre" class="form-label">Genere</label>
+                    <select class="form-control" id="genre" [(ngModel)]="model.genre" name="genre">
+                        <option *ngFor="let item of filmGenres" [ngValue]="item.value">{{item.key}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="my-3">
+                    <button type="submit" class="btn btn-primary">Crea</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

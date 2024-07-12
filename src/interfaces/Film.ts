@@ -15,4 +15,12 @@ export interface FilmOutput {
     description: string | null
     genre: FilmGenre
     minuteLenght: number
+    schedules: FilmSchedule[]
+}
+
+export interface FilmSchedule {
+    screenId: number
+    screenName: string
+    startDate: string
+    endDate: string
 }

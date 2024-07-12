@@ -1,0 +1,27 @@
+<app-navbar />
+<div class="container">
+    <div class="my-5">
+        <div>
+            <h1>Programmazione</h1>
+        </div>
+        <form (ngSubmit)="onSubmit()">
+            <div class="row mt-5">
+                <div class="col-4">
+                    <select class="form-control" id="genre" [(ngModel)]="model.fk_screen" name="genre">
+                        <option *ngFor="let item of screens" [ngValue]="item.id">{{item.name}}</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <input type="date" class="form-control" id="startDate" name="startDate"
+                        [(ngModel)]="model.startDate">
+                </div>
+                <div class="col-4">
+                    <input type="date" class="form-control" id="endDate" name="endDate" [(ngModel)]="model.endDate">
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary mt-5">Salva</button>
+            </div>
+        </form>
+    </div>
+</div>

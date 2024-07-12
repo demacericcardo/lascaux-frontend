@@ -1,0 +1,32 @@
+<app-navbar />
+<div class="container my-5">
+    <div class="my-5">
+        <h2>Crea nuova sala</h2>
+    </div>
+    <form (ngSubmit)="onSubmit()">
+        <div class="row d-flex align-items-end">
+            <div class="col-4">
+                <label for="name" class="form-label">Nome</label>
+                <input type="text" class="form-control" [(ngModel)]="model.name" name="name" id="name">
+            </div>
+            <div class="col-4">
+                <label for="capacity" class="form-label">Posti totali</label>
+                <input type="number" class="form-control" [(ngModel)]="model.capacity" name="capacity" id="capacity">
+            </div>
+            <div class="col-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="hasIMAX" [(ngModel)]="model.hasIMAX"
+                        name="hasIMAX">
+                    <label class="form-check-label" for="hasIMAX">
+                        Abilitato IMAX
+                    </label>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="my-3">
+                    <button type="submit" class="btn btn-primary">Crea</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

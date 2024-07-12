@@ -15,7 +15,7 @@ export class AuthService {
         return true;
       }),
       catchError(error => {
-        console.error('Login error', error);
+        console.error('Error', error);
         return of(false);
       })
     );
@@ -27,7 +27,7 @@ export class AuthService {
         return true;
       }),
       catchError(error => {
-        console.error('Login error', error);
+        console.error('Error', error);
         return of(false);
       })
     );
@@ -39,7 +39,7 @@ export class AuthService {
         return response;
       }),
       catchError(error => {
-        console.error('Login error', error);
+        console.error('Error', error);
         return of(false);
       })
     );
