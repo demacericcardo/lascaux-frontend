@@ -19,9 +19,9 @@ import { format } from 'date-fns';
 })
 export class ScheduleSetComponent {
   model: ScheduleInput = {
-    startDate: null,
-    endDate: null,
-    fk_film: null,
+    id: null,
+    startDate: '',
+    endDate: '',
     fk_screen: null,
   }
 
@@ -33,14 +33,14 @@ export class ScheduleSetComponent {
     const id: string | null = this.route.snapshot.paramMap.get('id');
     const idParsed: number = id ? parseInt(id) : 0;
 
-    this.model.fk_film = idParsed;
+    this.model.id = idParsed;
 
     this.filmService.getById(idParsed)
       .subscribe((data: FilmOutput | null) => {
-        if (data && data.schedules[0]) {
-          this.model.startDate = format(new Date(data.schedules[0].startDate), 'yyyy-MM-dd');
-          this.model.endDate = format(new Date(data.schedules[0].endDate), 'yyyy-MM-dd');
-          this.model.fk_screen = data.schedules[0].screenId;
+        if (data && data.schedule) {
+          this.model.startDate = format(new Date(data.schedule.startDate), 'yyyy-MM-dd');
+          this.model.endDate = format(new Date(data.schedule.endDate), 'yyyy-MM-dd');
+          this.model.fk_screen = data.schedule.screen.id;
         }
       });
 

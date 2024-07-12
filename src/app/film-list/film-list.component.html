@@ -8,35 +8,35 @@
             <button class="btn btn-primary" (click)="onAdd()">Aggiungi</button>
         </div>
     </div>
-    <table class="table">
+    <table class="table mt-5">
         <thead>
             <tr>
-                <th class="col-3" scope="col">Nome</th>
-                <th class="col-3" scope="col">Lunghezza</th>
-                <th class="col-3" scope="col">Genere</th>
-                <th class="col-3" scope="col">Regista</th>
-                <th class="col-3" scope="col"></th>
+                <th class="col-2" scope="col">Nome</th>
+                <th class="col-2" scope="col">Lunghezza</th>
+                <th class="col-1" scope="col">Genere</th>
+                <th class="col-2" scope="col">Regista</th>
+                <th class="col-5" scope="col"></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of data; let i = index">
-                <td class="col-3">
+                <td class="col-2">
                     <span>{{item.title}}</span>
                 </td>
-                <td class="col-3">
+                <td class="col-2">
                     <span>{{item.minuteLenght}} minuti</span>
                 </td>
-                <td class="col-3">
+                <td class="col-1">
                     <span>{{getGenreString(item.genre)}}</span>
                 </td>
-                <td class="col-3">
+                <td class="col-2">
                     <span>{{item.director}}</span>
                 </td>
-                <td class="col-3">
-                    <div class="d-flex justify-content-center align-items-center">
+                <td class="col-5">
+                    <div class="d-flex justify-content-end align-items-center">
 
                         <div class="d-flex justify-content-center align-items-center"
-                            *ngIf="item.schedules[0]; else noSchedule">
+                            *ngIf="item.schedule; else noSchedule">
                             <div class="me-2">
                                 <button class="btn btn-outline-dark" (click)="onSchedule(item.id)">Modifica
                                     prog.</button>

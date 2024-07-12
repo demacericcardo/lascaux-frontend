@@ -1,16 +1,15 @@
-import { FilmOutput } from "./Film"
 import { ScreenOutput } from "./Screen"
 
 export interface ScheduleInput {
-    startDate: string | null
-    endDate: string | null
+    id: number | null
+    startDate: string
+    endDate: string
     fk_screen: number | null
-    fk_film: number | null
 }
 
 export interface ScheduleOutput {
-    startDate: string | null
-    endDate: string | null
+    id: number
+    startDate: string
+    endDate: string
     screen: ScreenOutput
-    film: FilmOutput
 }

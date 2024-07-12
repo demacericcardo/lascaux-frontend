@@ -5,7 +5,7 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="showNavbar; else hideNavbar">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" href="/">Programmazione</a>
@@ -19,5 +19,12 @@
       </ul>
       <span style="cursor: pointer;" class="nav-link" (click)="onLogout()">Logout</span>
     </div>
+    <ng-template #hideNavbar>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+        <span style="cursor: pointer;" class="nav-link" (click)="onLogin()">Login</span>
+      </div>
+    </ng-template>
   </div>
 </nav>

@@ -1,14 +1,17 @@
-<app-navbar *ngIf="showNavbar" />
+<app-navbar />
 <div class="container">
   <div class="d-flex justify-content-between align-items-center my-5">
     <div class="d-flex">
       <div class="d-flex align-items-center me-2">
         <label class="me-2" for="from">Da:</label>
-        <input id="from" name="from" type="date" class="form-control" [(ngModel)]="fromDate">
+        <input id="from" name="from" type="date" class="form-control" [(ngModel)]="fromDate" (input)="onDateChange()">
       </div>
       <div class="d-flex align-items-center me-2">
         <label class="me-2" for="to">A:</label>
-        <input id="to" name="to" type="date" class="form-control" [(ngModel)]="toDate">
+        <input id="to" name="to" type="date" class="form-control" [(ngModel)]="toDate" (input)="onDateChange()">
+      </div>
+      <div>
+        <button class="btn btn-outline-dark" (click)="onResetDates()">Reset</button>
       </div>
     </div>
     <div>
@@ -44,15 +47,15 @@
               </div>
               <div class="col-2">
                 <div class="text-center d-flex justify-content-center align-items-center w-100 h-100">
-                  <div *ngIf="item.schedules[0]; else noSchedule">
+                  <div *ngIf="item.schedule; else noSchedule">
                     <div>
-                      <small>Dal {{item.schedules[0].startDate | date:'dd/MM/yyyy'}}</small>
+                      <small>Dal {{item.schedule.startDate | date:'dd/MM/yyyy'}}</small>
                     </div>
                     <div>
-                      <small>Al {{item.schedules[0].endDate | date:'dd/MM/yyyy'}}</small>
+                      <small>Al {{item.schedule.endDate | date:'dd/MM/yyyy'}}</small>
                     </div>
                     <div>
-                      <strong>In {{item.schedules[0].screenName}}</strong>
+                      <strong>In {{item.schedule.screen.name}}</strong>
                     </div>
                   </div>
                   <ng-template #noSchedule>

@@ -7,6 +7,7 @@ import { FilmGenre } from '../../enums/FilmGenre';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { isAfter, isBefore, isSameDay, isWithinInterval } from 'date-fns';
 
 @Component({
   selector: 'app-list',
@@ -21,16 +22,10 @@ export class ListComponent {
   searchString: string = '';
   fromDate: string | null = null;
   toDate: string | null = null;
-  showNavbar: boolean = false;
 
   constructor(private filmService: FilmService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.authService.isLoggedIn()
-      .subscribe((isLoggedIn: boolean) => {
-        this.showNavbar = isLoggedIn;
-      });
-
     this.filmService.getAll()
       .subscribe((data: FilmOutput[]) => {
         this.data = data;
@@ -42,12 +37,21 @@ export class ListComponent {
     this.filteredData = this.data.filter(e => e.title.toLowerCase().includes(this.searchString.toLowerCase()));
   }
 
-  onFromDateChange() {
-    this.filteredData = this.data.filter(e => e.title.toLowerCase().includes(this.searchString.toLowerCase()));
+  onResetDates() {
+    this.fromDate = null;
+    this.toDate = null;
+    this.filteredData = this.data;
   }
 
-  onToDateChange() {
-    this.filteredData = this.data.filter(e => e.title.toLowerCase().includes(this.searchString.toLowerCase()));
+  onDateChange() {
+    this.filteredData = this.data.filter(e => {
+      if (!e.schedule) return false;
+
+      const isFromValid = !this.fromDate || isBefore(this.fromDate, e.schedule.endDate) || isSameDay(this.fromDate, e.schedule.endDate);
+      const isToValid = !this.toDate || isAfter(this.toDate, e.schedule.startDate) || isSameDay(this.toDate, e.schedule.startDate);
+
+      return isFromValid && isToValid;
+    });
   }
 
   onAdd() {

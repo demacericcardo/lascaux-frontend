@@ -1,4 +1,5 @@
 import { FilmGenre } from "../enums/FilmGenre"
+import { ScheduleOutput } from "./Schedule"
 
 export interface FilmInput {
     title: string
@@ -15,12 +16,5 @@ export interface FilmOutput {
     description: string | null
     genre: FilmGenre
     minuteLenght: number
-    schedules: FilmSchedule[]
-}
-
-export interface FilmSchedule {
-    screenId: number
-    screenName: string
-    startDate: string
-    endDate: string
+    schedule: ScheduleOutput | null
 }
